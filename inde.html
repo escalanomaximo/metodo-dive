@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método DIVE™ - Demanda Imediata de Vendas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Light Beige (#F5F5DC), Dark Slate Gray (#2F4F4F), and a vibrant gradient of Deep Sky Blue (#00BFFF) to Medium Slate Blue (#7B68EE) for accents. -->
+    <!-- Application Structure Plan: A single-page, vertical scrolling narrative application that translates the 6-slide presentation into interactive sections. The user flow is linear, scrolling from the initial pain point to the final call-to-action. Key interactions include scroll-triggered animations for text and elements, an interactive diagram for the 'How DIVE™ Works' section where hovering reveals details, and a clear visual comparison between old strategies and the DIVE™ method. This structure was chosen to maintain the compelling storytelling of the source report while enhancing it with web-native interactivity and a modern, focused user experience. -->
+    <!-- Visualization & Content Choices: The application will use a mix of presentation methods to achieve its goals without SVG or Mermaid. 1. Pain Point (Slide 1): Strong typography on an evocative background (Goal: Engage). 2. Key Metrics (Slide 2): An animated number counter for '100 a 180' clients using JS (Goal: Impact, Inform). 3. DIVE™ Method (Slide 3): An interactive diagram built with HTML/CSS (Flexbox) and JS for hover effects, revealing details on each of the three pillars (Goal: Organize, Inform). 4. Urgency (Slide 4): Animated icons (e.g., pulsing clock) using CSS animations (Goal: Persuade). 5. Competitor Invalidation (Slide 5): A two-column comparison layout using HTML/CSS to visually contrast old vs. new (Goal: Compare). 6. CTA (Slide 6): A prominent button with a JS-powered modal for contact info (Goal: Action). No charts are needed, so Chart.js is not implemented. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f7f2;
+            color: #1a202c;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #00BFFF, #7B68EE);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .interactive-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .interactive-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .pulse-animate {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <main>
+        <section id="slide1" class="section text-center bg-gray-900 text-white">
+            <div class="max-w-3xl mx-auto fade-in">
+                <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tight">A Incerteza que Arranca Seu Sono.</h1>
+                <p class="text-lg md:text-2xl text-gray-300 max-w-2xl mx-auto">
+                    Aquela sensação de ter um bom produto ou serviço, sabe que tem uma demanda grande de pessoas interessadas, mas o público não te procura, não sabe que você existe, por isso não consegue ter previsibilidade financeira e bater suas metas de vendas. Se essa inconstância te tira o sono, você não está sozinho.
+                </p>
+            </div>
+        </section>
+
+        <section id="slide2" class="section text-center">
+            <div class="max-w-3xl mx-auto fade-in">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Mas e se Houvesse um Caminho para <span class="gradient-text">Dominar o Processo de Aquisição de Clientes de Forma Constante e Previsível?</span></h2>
+                <p class="text-lg md:text-xl mb-8 text-gray-600">Um método que transformasse a incerteza em...</p>
+                <div class="bg-white p-8 rounded-2xl shadow-xl inline-block">
+                    <div class="text-6xl md:text-8xl font-black gradient-text" id="client-counter">42 a 66</div>
+                    <p class="text-xl md:text-2xl font-bold mt-2 text-gray-800">Novos Clientes Mensais</p>
+                    <p class="text-md text-gray-500 mt-2">Resultados claros em apenas 35 dias. Isso é o <span class="font-bold">Método DIVE™.</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide3" class="section bg-gray-50">
+            <div class="max-w-5xl mx-auto text-center fade-in">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Como o DIVE™ Ativa Sua Demanda</h2>
+                <p class="text-lg md:text-xl mb-12 text-gray-600">Um mecanismo único, estruturado e validado que transforma seu negócio.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="interactive-card bg-white p-8 rounded-2xl shadow-lg text-left">
+                        <div class="text-4xl mb-4">🔍</div>
+                        <h3 class="text-2xl font-bold mb-2">Conectar com quem JÁ BUSCA</h3>
+                        <p class="text-gray-600">Posicionamos sua oferta para quem está ativamente procurando por ela, no momento exato da necessidade.</p>
+                    </div>
+                    <div class="interactive-card bg-white p-8 rounded-2xl shadow-lg text-left">
+                        <div class="text-4xl mb-4">💡</div>
+                        <h3 class="text-2xl font-bold mb-2">Despertar o INTERESSE</h3>
+                        <p class="text-gray-600">Criamos demanda onde ela não existia, impactando novos potenciais clientes e gerando novas oportunidades.</p>
+                    </div>
+                    <div class="interactive-card bg-white p-8 rounded-2xl shadow-lg text-left">
+                        <div class="text-4xl mb-4">🔄</div>
+                        <h3 class="text-2xl font-bold mb-2">Reativar sua BASE DE CLIENTES</h3>
+                        <p class="text-gray-600">Reengajamos quem já te conhece e confia, incentivando novas compras e maximizando o valor de cada cliente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide4" class="section text-center bg-gray-900 text-white">
+            <div class="max-w-3xl mx-auto fade-in">
+                <div class="text-6xl mb-6 pulse-animate">⏳</div>
+                <h2 class="text-4xl md:text-6xl font-black mb-4 tracking-tight">O Futuro Não Espera.</h2>
+                <p class="text-lg md:text-2xl text-gray-300 max-w-2xl mx-auto">
+                    Enquanto você decide, seus concorrentes agem. A demanda que deveria ser sua, está sendo engolida pela concorrência nesse exato MOMENTO. O Método DIVE™ é sua chance de ter previsibilidade real e CONSISTÊNCIA nos negócios, e a oportunidade para mudar o jogo HOJE é para aqueles que têm atitudes.
+                </p>
+            </div>
+        </section>
+        
+        <section id="slide5" class="section">
+            <div class="max-w-5xl mx-auto text-center fade-in">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">As Estratégias Ultrapassadas Que Te Seguram</h2>
+                <p class="text-lg md:text-xl mb-12 text-gray-600">Por que as velhas promessas e 'agências comuns' falham?</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                    <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                        <h3 class="font-bold text-xl mb-2 text-red-800">O Que Não Funciona</h3>
+                        <ul class="list-none space-y-3 text-gray-700">
+                            <li><span class="text-red-500 font-bold mr-2">✗</span>"Agências" que entregam cliques, não clientes.</li>
+                            <li><span class="text-red-500 font-bold mr-2">✗</span>Marketing "esperança" (panfletos, sorte).</li>
+                            <li><span class="text-red-500 font-bold mr-2">✗</span>Falsos "gurus" com promessas milagrosas.</li>
+                            <li><span class="text-red-500 font-bold mr-2">✗</span>Pagar por visibilidade que não vira venda.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg">
+                        <h3 class="font-bold text-xl mb-2 text-green-800">A Solução DIVE™</h3>
+                         <ul class="list-none space-y-3 text-gray-700">
+                            <li><span class="text-green-500 font-bold mr-2">✓</span>Processo focado em vendas e ROI.</li>
+                            <li><span class="text-green-500 font-bold mr-2">✓</span>Sistema validado e previsível.</li>
+                            <li><span class="text-green-500 font-bold mr-2">✓</span>Resultados concretos e mensuráveis.</li>
+                            <li><span class="text-green-500 font-bold mr-2">✓</span>Investimento que se traduz em demanda.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide6" class="section bg-gray-50">
+            <div class="max-w-3xl mx-auto text-center fade-in">
+                <h2 class="text-4xl md:text-6xl font-black mb-4 tracking-tight">Sua Decisão Para Um Futuro de <span class="gradient-text">Demanda Constante</span></h2>
+                <p class="text-lg md:text-xl mb-8 text-gray-600">Não aceite mais a incerteza. Descubra o processo que garante resultados em cerca de 35 dias. Este é o momento de agir.</p>
+                <a href="https://wa.me/47996750150?text=Quero%20agendar%20uma%20reuni%C3%A3o%20e%20conhecer%20o%20M%C3%A9todo%20DIVE" target="_blank" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-4 px-10 rounded-full text-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 inline-block">
+                    Agendar Conversa de 15 Minutos
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            function animateValue(obj, start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const currentValue = Math.floor(progress * (end - start) + start);
+                    obj.innerHTML = `${currentValue} a ${Math.floor(currentValue * (66 / 42))}`; /* Adjusted ratio for 42 to 66 */
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                         obj.innerHTML = `42 a 66`; /* Final value */
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            const counter = document.getElementById('client-counter');
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateValue(counter, 0, 42, 2000); /* Start at 0, end at 42 */
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            if(counter) {
+                counterObserver.observe(counter);
+            }
+        });
+    </script>
+</body>
+</html>
